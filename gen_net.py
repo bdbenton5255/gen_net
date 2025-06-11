@@ -1,11 +1,14 @@
 import numpy as np
 
+#Define function for mean squared error
 def mse_loss(y_true, y_pred):
     return ((y_true - y_pred) ** 2).mean()
 
+#Define function for sigmoid function
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
+#Define class for a single neuron
 class Neuron:
 
     def __init__(self, weights, bias):
@@ -16,6 +19,7 @@ class Neuron:
         total = np.dot(self.weights, inputs) + self.bias
         return sigmoid(total)
 
+#Define class for a network of neurons
 class OurNeuralNetwork:
 
     def __init__(self):
