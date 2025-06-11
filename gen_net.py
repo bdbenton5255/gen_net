@@ -26,7 +26,7 @@ class OurNeuralNetwork:
         bias = 0
 
         self.h1 = Neuron(weights, bias)
-        self.h1 = Neuron(weights, bias)
+        self.h2 = Neuron(weights, bias)
         self.o1 = Neuron(weights, bias)
     
     def feedforward(self, x):
