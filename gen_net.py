@@ -19,7 +19,7 @@ n = Neuron(weights, bias)
 x = np.array([2, 3])
 print(n.feedforward(x))
 
-class OurNeuralNetwork
+class OurNeuralNetwork:
 
     def __init__(self):
         weights = np.array([0, 1])
