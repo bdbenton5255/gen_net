@@ -1,0 +1,1 @@
+A simple neural network from scratch using Python's NumpPy that uses height and weight data to predict gender.
