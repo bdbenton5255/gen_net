@@ -95,3 +95,27 @@ class OurNeuralNetwork:
                 self.w5 -= learn_rate * d_L_d_ypred * d_h1_d_w5
                 self.w6 -= learn_rate * d_L_d_ypred * d_h1_d_w6
                 self.b3 -= learn_rate * d_L_d_ypred * d_h1_d_b3
+
+            #Calculate total loss at the end of each epoch
+            if epoch %10 == 0:
+                y_preds = np.apply_along_axis(self.feedforward, 1, data)
+                loss = mse_loss(all_y_trues, y_pred)
+                print("Epoch %d loss: %.3f" % (epoch, loss))
+
+#Define dataset ([weight, height] shifted near 0)
+data = np.array([
+    [-2, -1],   # Alice
+    [25, 6],    # Bob
+    [17, 4],    # Charlie
+    [-15, -6],  # Diana
+])
+all_y_trues = np.array([
+    1,  # Alice
+    0,  # Bob
+    0,  # Charlie
+    1,  # Diana
+])
+
+#Train network
+network = OurNeuralNetwork()
+network.train(data, all_y_trues)
