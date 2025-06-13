@@ -99,7 +99,7 @@ class OurNeuralNetwork:
             #Calculate total loss at the end of each epoch
             if epoch %10 == 0:
                 y_preds = np.apply_along_axis(self.feedforward, 1, data)
-                loss = mse_loss(all_y_trues, y_pred)
+                loss = mse_loss(all_y_trues, y_preds)
                 print("Epoch %d loss: %.3f" % (epoch, loss))
 
 #Define dataset ([weight, height] shifted near 0)
@@ -119,3 +119,9 @@ all_y_trues = np.array([
 #Train network
 network = OurNeuralNetwork()
 network.train(data, all_y_trues)
+
+#Make some predictions
+emily = np.array([-7, -3]) #128 pounds, 63 inches
+frank = np.array([20, 2])  #155 pounds, 68 inches
+print("Emily: %.3f" % network.feedforward(emily)) #0.951 - F
+print("Frank: %.3f" % network.feedforward(frank)) #0.039 - M
