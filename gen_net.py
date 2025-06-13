@@ -52,7 +52,7 @@ class OurNeuralNetwork:
                 h1 = sigmoid(sum_h1)
 
                 sum_h2 = self.w3 * x[0] + self.w4 * x[1] + self.b2
-                h1 = sigmoid(sum_h2)
+                h2 = sigmoid(sum_h2)
 
                 sum_o1 = self.w5 * h1 + self.w6 * h2 + self.b3
                 o1 = sigmoid(sum_o1)
@@ -64,7 +64,7 @@ class OurNeuralNetwork:
                 #Neuron o1
                 d_ypred_d_w5 = h1 * deriv_sigmoid(sum_o1)
                 d_ypred_d_w6 = h2 * deriv_sigmoid(sum_o1)
-                d_ypred_d_w3 = deriv_sigmoid(sum_o1)
+                d_ypred_d_b3 = deriv_sigmoid(sum_o1)
 
                 d_ypred_d_h1 = self.w5 * deriv_sigmoid(sum_o1)
                 d_ypred_d_h2 = self.w6 * deriv_sigmoid(sum_o1)
@@ -87,14 +87,14 @@ class OurNeuralNetwork:
                 self.b1 -= learn_rate * d_L_d_ypred * d_ypred_d_h1 * d_h1_d_b1
 
                 #Neuron h2
-                self.w3 -= learn_rate * d_L_d_ypred * d_ypred_d_h2 * d_h1_d_w3
-                self.w4 -= learn_rate * d_L_d_ypred * d_ypred_d_h2 * d_h1_d_w4
-                self.b2 -= learn_rate * d_L_d_ypred * d_ypred_d_h2 * d_h1_d_b2
+                self.w3 -= learn_rate * d_L_d_ypred * d_ypred_d_h2 * d_h2_d_w3
+                self.w4 -= learn_rate * d_L_d_ypred * d_ypred_d_h2 * d_h2_d_w4
+                self.b2 -= learn_rate * d_L_d_ypred * d_ypred_d_h2 * d_h2_d_b2
 
                 #Neuron o1
-                self.w5 -= learn_rate * d_L_d_ypred * d_h1_d_w5
-                self.w6 -= learn_rate * d_L_d_ypred * d_h1_d_w6
-                self.b3 -= learn_rate * d_L_d_ypred * d_h1_d_b3
+                self.w5 -= learn_rate * d_L_d_ypred * d_ypred_d_w5
+                self.w6 -= learn_rate * d_L_d_ypred * d_ypred_d_w6
+                self.b3 -= learn_rate * d_L_d_ypred * d_ypred_d_b3
 
             #Calculate total loss at the end of each epoch
             if epoch %10 == 0:
