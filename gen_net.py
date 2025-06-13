@@ -12,3 +12,27 @@ def deriv_sigmoid(x):
 #Mean squared error for loss calcuation
 def mse_loss(y_true, y_pred):
     return ((y_true - y_pred) ** 2).mean()
+
+class OurNeuralNetwork:
+
+    def __init__(self):
+
+        #Weights
+        self.w1 = np.random.normal()
+        self.w2 = np.random.normal()
+        self.w3 = np.random.normal()
+        self.w4 = np.random.normal()
+        self.w5 = np.random.normal()
+        self.w6 = np.random.normal()
+
+        #Biases
+        self.b1 = np.random.normal()
+        self.b2 = np.random.normal()
+        self.b3 = np.random.normal()
+
+    def feedforward(self, x):
+
+        #Define neurons with sigmoid function and input array x
+        h1 = sigmoid(self.w1 * x[0] + self.w2 * x[1] + self.b1)
+        h2 = sigmoid(self.w3 * x[0] + self.w4 * x[1] + self.b2)
+        o1 = sigmoid(self.w5 * h1 + self.w6 * h2 + self.b3)
